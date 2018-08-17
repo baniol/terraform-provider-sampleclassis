@@ -1,7 +1,7 @@
 package classis
 
 import (
-	"github.com/josmo/terraform-provider-sampleclassis/classis/client"
+	"github.com/baniol/terraform-provider-sampleclassis/classis/client"
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
@@ -111,14 +111,13 @@ func resourceAwsSpotGroupObjectCreate(d *schema.ResourceData, meta interface{}) 
 	if v, ok := d.GetOk("security_groups"); ok {
 		var sendSecurityGroups = []classis.SecurityGroup{}
 		for _, element := range v.([]interface{}) {
-			var securityGroup = classis.SecurityGroup{ element.(string)}
+			var securityGroup = classis.SecurityGroup{element.(string)}
 			sendSecurityGroups = append(sendSecurityGroups, securityGroup)
 		}
 		launchSpecification.SecurityGroups = sendSecurityGroups
 	}
 
 	spotGroup.LaunchSpecification = launchSpecification
-
 
 	id, err := client.CreateSpotGroup(spotGroup)
 	d.SetId(id)
@@ -129,11 +128,11 @@ func resourceAwsSpotGroupObjectCreate(d *schema.ResourceData, meta interface{}) 
 }
 
 func resourceAwsSpotGroupObjectRead(d *schema.ResourceData, meta interface{}) error {
-    //TODO: This really should hit a get API to see what the current state is.  Something like the following sudo code
-    // client := meta.(*classis.Client)
-    // spotGroup, err := client.ReadSpotGroup(d.Id())
-    // if err then d.SetId("")
-    // else set and changed values
+	//TODO: This really should hit a get API to see what the current state is.  Something like the following sudo code
+	// client := meta.(*classis.Client)
+	// spotGroup, err := client.ReadSpotGroup(d.Id())
+	// if err then d.SetId("")
+	// else set and changed values
 	return nil
 }
 

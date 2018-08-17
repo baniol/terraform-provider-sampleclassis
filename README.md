@@ -14,9 +14,9 @@ drone exec --repo-name terraform-provider-sampleclassis
 Once the binaries are built simply run 
 
 ```sh
-docker build -t josmo/terraform-sampleclassis .
-docker run -i -t -v $(pwd):/app/ -w /app/ josmo/terraform-sampleclassis init -plugin-dir=/usr/local/terraform-plugins 
-docker run -i -t -v $(pwd):/app/ -w /app/ josmo/terraform-sampleclassis plan
+docker build -t baniol/terraform-sampleclassis .
+docker run -i -t -v $(pwd):/app/ -w /app/ baniol/terraform-sampleclassis init -plugin-dir=/usr/local/terraform-plugins 
+docker run -i -t -v $(pwd):/app/ -w /app/ baniol/terraform-sampleclassis plan
 ```
 
 This should create a docker image that includes your custom plugin for other folks to use :)

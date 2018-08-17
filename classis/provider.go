@@ -1,9 +1,9 @@
 package classis
 
 import (
+	"github.com/baniol/terraform-provider-sampleclassis/classis/client"
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/josmo/terraform-provider-sampleclassis/classis/client"
 )
 
 func Provider() terraform.ResourceProvider {
@@ -31,7 +31,7 @@ func Provider() terraform.ResourceProvider {
 				Description: "password for classis",
 			},
 		},
-		ResourcesMap:  map[string]*schema.Resource{
+		ResourcesMap: map[string]*schema.Resource{
 			"sampleclassis_aws_spot_group": resourceAwsSpotGroupObject(),
 		},
 		ConfigureFunc: configureProvider,
